@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Results</title>
+    <link href="/styles/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Search Results for "<%= query %>"</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Symbol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% results.forEach(result => { %>
+          <tr>
+            <td><a href="/coin/<%= result.id %>"><%= result.name %></a></td>
+            <td><%= result.symbol.toUpperCase() %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+
+  </body>
+</html>

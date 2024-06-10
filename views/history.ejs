@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= coinId %> - 30 Day Price History</title>
+    <link href="/styles/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1><%= coinId %> - 30 Day Price History</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Price (USD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% history.forEach(point => { %>
+          <tr>
+            <td><%= new Date(point[0]).toLocaleDateString() %></td>
+            <td>$<%= point[1].toFixed(2) %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+
+    <%- include('footer') %>
+  </body>
+</html>

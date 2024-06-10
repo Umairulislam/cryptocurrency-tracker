@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= coin.name %> Details</title>
+    <link href="/styles/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container coin-container">
+      <div class="coin-container-heading">
+        <img
+          src="<%= coin.image.large %>"
+          alt="<%= coin.name %> logo"
+          width="100"
+        />
+        <h1><%= coin.name %> Details</h1>
+      </div>
+      <div>
+        <p><strong>Name:</strong> <%= coin.name %></p>
+        <p><strong>Symbol:</strong> <%= coin.symbol.toUpperCase() %></p>
+        <p>
+          <strong>Current Price:</strong> $<%=
+          coin.market_data.current_price.usd.toLocaleString() %>
+        </p>
+        <p>
+          <strong>Market Cap:</strong> $<%=
+          coin.market_data.market_cap.usd.toLocaleString() %>
+        </p>
+        <p>
+          <strong>24h Change:</strong> <%=
+          coin.market_data.price_change_percentage_24h.toFixed(2) %>%
+        </p>
+        <p><strong>Description:</strong> <%= coin.description.en %></p>
+        <p>
+          <strong>Homepage:</strong>
+          <a href="<%= coin.links.homepage[0] %>" target="_blank"
+            ><%= coin.links.homepage[0] %></a
+          >
+        </p>
+        <a href="/history/<%= coin.id %>">View 30-day price history</a>
+      </div>
+    </div>
+
+    <%- include('footer') %>
+  </body>
+</html>

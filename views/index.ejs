@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto Tracker</title>
+    <link href="/styles/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Top 10 Cryptocurrencies</h1>
+      <form action="/search" method="get">
+        <input
+          type="text"
+          name="q"
+          placeholder="Search for a cryptocurrency..."
+        />
+        <button type="submit">Search</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Symbol</th>
+            <th>Price</th>
+            <th>Market Cap</th>
+            <th>24h Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% coins.forEach(coin => { %>
+          <tr>
+            <td>
+              <a href="/coin/<%= coin.id %>">
+                <img
+                  src="<%= coin.image %>"
+                  alt="<%= coin.name %> logo"
+                  style="width: 24px; vertical-align: middle; margin-right: 8px"
+                />
+                <%= coin.name %>
+              </a>
+            </td>
+            <td><%= coin.symbol %></td>
+            <td>$<%= coin.current_price.toFixed(2) %></td>
+            <td><%= coin.market_cap_rank.toLocaleString() %></td>
+            <td><%= coin.price_change_percentage_24h.toFixed(2) %>%</td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+
+    <%- include('footer') %>
+  </body>
+</html>
